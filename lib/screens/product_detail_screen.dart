@@ -13,10 +13,10 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productId =
-        ModalRoute.of(context).settings.arguments as String; //is the id
+        ModalRoute.of(context).settings.arguments as String; //is the id!
     final loadedProduct = Provider.of<Products>(
       context,
-      listen: false,
+      listen: false, // this widget will not rebuild if the notify listener is called somewhere in the app
     ).findById(productId);
     return Scaffold(
       appBar: AppBar(
