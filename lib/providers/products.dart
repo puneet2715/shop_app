@@ -74,6 +74,9 @@ class Products with ChangeNotifier {
       final response = await http.get(Uri.parse(url));
       final extractedData = json.decode(response.body) as Map<String,
           dynamic>; //dart would give error most proabably if dyamic is replaced with Map as nested Maps give errors according to the course
+      if (extractedData == null) {
+        return;
+      }
       final List<Product> loadedProducts = [];
       extractedData.forEach((prodId, prodData) {
         loadedProducts.add(Product(
