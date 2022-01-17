@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../screens/edit_product_screen.dart';
 import '../providers/products.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
+
 class UserProductItem extends StatelessWidget {
   final String id;
   final String title;
@@ -17,7 +19,7 @@ class UserProductItem extends StatelessWidget {
     return ListTile(
       title: Text(title),
       leading: CircleAvatar(
-        backgroundImage: NetworkImage(
+        backgroundImage: CachedNetworkImageProvider(
             imageUrl), //NetworkImage is not a widget...its a provider
         // radius: 15,
       ),
