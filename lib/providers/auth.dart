@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:async';
+import 'package:flutter_config/flutter_config.dart';
 
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
@@ -33,7 +34,7 @@ class Auth with ChangeNotifier {
   Future<void> _authenticate(
       String email, String password, String urlSegment) async {
     final url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=AIzaSyAMp2SvdmYTWOy5WVYU2myZEtLh7aizuuw';
+        'https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=${FlutterConfig.get('firebase_webApi_key')}';
     try {
       final response = await http.post(
         Uri.parse(url),
